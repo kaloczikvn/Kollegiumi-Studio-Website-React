@@ -1,0 +1,101 @@
+@import "atropos/scss";
+
+.event-box {
+	position: relative;
+	margin-bottom: 30px;
+	display: block;
+	/*display: flex;
+	width: 960px;
+	height: 500px;
+	border-radius: 30px;
+	box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+	margin-bottom: 30px;
+	background-position: 50% 50%;
+	background-size: 100%;
+	transition: all .2s ease;
+	overflow: hidden;
+
+	&::before {
+		content: "";
+		background: linear-gradient(8deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		opacity: 0;
+		transition: all .2s ease;
+	}*/
+
+	.atropos {
+		max-width: 960px;
+		width: 100%;
+		height: 500px;
+		position: relative;
+
+		.atropos-inner {
+			border-radius: 30px;
+			box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+		}
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+
+	.overlay {
+		background: linear-gradient(8deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		opacity: 0;
+		transition: all .2s ease;
+	}
+
+	.information {
+		position: absolute;
+		bottom: 40px;
+		left: 40px;
+		right: 40px;
+		opacity: 0;
+		display: flex;
+		flex-flow: column;
+		transition: all .2s ease;
+		text-shadow: 0 0 12px rgba(0,0,0,0.25);
+
+		.title {
+			color: #fff;
+			font-size: 34px;
+			z-index: 5;
+			font-weight: 700;
+		}
+
+		.date {
+			color: rgb(158, 158, 158);
+			opacity: 1;
+			font-size: 18px;
+			z-index: 5;
+			font-weight: 700;
+			margin-top: 12px;
+		}
+	}
+
+	&:hover {
+		background-size: 105%;
+		transition: all .2s ease;
+
+		.overlay {
+			opacity: .8;
+			transition: all .2s ease;
+		}
+
+		.information {
+			opacity: 1;
+			transition: all .2s ease;
+		}
+	}
+}
