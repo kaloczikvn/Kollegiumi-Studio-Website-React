@@ -6,13 +6,17 @@ import {
 	InstagramIcon,
 	FacebookFIcon
 } from "react-line-awesome";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper";
+import FsLightbox from "fslightbox-react";
 
 import Nav from "./components/Nav/Nav";
 import EventBox from "./components/EventBox/EventBox";
 import TeamBox from "./components/TeamBox/TeamBox";
+import ContactBox from "./components/ContactBox/ContactBox";
 
-import { getEvents, getTeam } from "./services/EventService";
-import { ModelEvent, ModelTeam } from "./models/Models";
+import { getEvents, getGallery, getTeam } from "./services/EventService";
+import { ModelEvent, ModelImage, ModelTeam } from "./models/Models";
 import { GetImageUrl } from "./helpers/ImageHelper";
 
 import logo_rgbvisual from "./assets/img/sponsors/rgbvisual_ts.png";
@@ -21,6 +25,7 @@ import logo_rockgolyo from "./assets/img/sponsors/rockgolyo_tr.png";
 import logo_ehok from "./assets/img/sponsors/ehok_tr.png";
 import since from "./assets/img/since.png";
 
+import "swiper/css";
 import "./App.scss";
 
 const App: React.FC = () => {
@@ -38,6 +43,26 @@ const App: React.FC = () => {
 		loading: true,
 		team: [],
 	});
+	const [gallery, setGallery] = useState<{
+		loading: boolean,
+		gallery: ModelImage[],
+		lightbox: string[],
+	}>({
+		loading: true,
+		gallery: [],
+		lightbox: [],
+	});
+	const [lightboxController, setLightboxController] = useState({
+		toggler: false,
+		slide: 1
+	});
+		
+	const openLightboxOnSlide = (number: number) => {
+		setLightboxController({
+			toggler: !lightboxController.toggler,
+			slide: number
+		});
+	}
 
 	useEffect(() => {
 		getEvents()
@@ -67,8 +92,29 @@ const App: React.FC = () => {
 					team: [],
 				});
 			});
+
+		getGallery()
+			.then((res: any) => {
+				let _tempLightbox: string[] = [];
+				res.data.gallery.forEach((element: ModelImage) => {
+					if (element?.image) {
+						_tempLightbox.push(GetImageUrl(element));
+					}
+				});
+				setGallery({
+					loading: false,
+					gallery: res.data.gallery,
+					lightbox: _tempLightbox,
+				});
+			})
+			.catch((err: any) => {
+				setGallery({
+					loading: false,
+					gallery: [],
+					lightbox: [],
+				});
+			});
 	}, []);
-	
 
 	return (
 		<div className="App">
@@ -79,11 +125,11 @@ const App: React.FC = () => {
 			<section id="events">
 				<div className="container">
 					{!events.loading && events.events.length > 0 &&
-						<>
+						<div className="events-wrapper">
 							{events.events.map((event: ModelEvent, index: number) => (
 								<EventBox key={index} event={event} />
 							))}
-						</>
+						</div>
 					}
 				</div>
 			</section>
@@ -142,6 +188,32 @@ const App: React.FC = () => {
 					</div>
 				</div>
 			</section>
+			<section id="gallery">
+				{(!gallery.loading && gallery.gallery.length > 0) &&
+					<>
+						<Swiper
+							modules={[
+								Autoplay
+							]}
+							spaceBetween={0}
+							slidesPerView={3}
+							autoplay={{ delay: 3000 }}
+							loop={true}
+						>
+							{gallery.gallery.map((image: ModelImage, index: number) => (
+								<SwiperSlide key={index} onClick={() => openLightboxOnSlide(index + 1)}>
+									<img src={GetImageUrl(image)} alt="" />
+								</SwiperSlide>
+							))}
+						</Swiper>
+						<FsLightbox
+							toggler={lightboxController.toggler}
+							sources={gallery.lightbox}
+							slide={lightboxController.slide}
+						/>
+					</>
+				}
+			</section>
 			<section id="contact">
 				<div className="container">
 					<h2 className="section-title">
@@ -151,30 +223,38 @@ const App: React.FC = () => {
 						Írj ha bármilyen kérdésed van!
 					</h3>
 					<div className="contact-grid">
-						<a href="mailto:szestuvez@gmail.com" target="_blank" className="contact-box">
+						<ContactBox
+							url="mailto:szestuvez@gmail.com"
+						>
 							<EnvelopeIcon />
 							<span>
 								szestuvez@gmail.com
 							</span>
-						</a>
-						<a href="https://goo.gl/maps/ZLPEATLByKXce2Wo8" target="_blank" className="contact-box">
+						</ContactBox>
+						<ContactBox
+							url="https://goo.gl/maps/ZLPEATLByKXce2Wo8"
+						>
 							<MapMarkerIcon />
 							<span>
 								9026 GYŐR, EGYETEM TÉR 1. - K/3
 							</span>
-						</a>
-						<a href="https://www.facebook.com/studioSZE" target="_blank" className="contact-box">
+						</ContactBox>
+						<ContactBox
+							url="https://www.facebook.com/studioSZE"
+						>
 							<FacebookFIcon />
 							<span>
 								Facebook
 							</span>
-						</a>
-						<a href="https://www.instagram.com/kollegiumistudio/" target="_blank" className="contact-box">
+						</ContactBox>
+						<ContactBox
+							url="https://www.instagram.com/kollegiumistudio/"
+						>
 							<InstagramIcon />
 							<span>
 								Instagram
 							</span>
-						</a>
+						</ContactBox>
 					</div>
 				</div>
 			</section>

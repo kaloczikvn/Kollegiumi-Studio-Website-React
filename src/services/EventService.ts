@@ -13,3 +13,10 @@ export const getTeam = async () => {
         method: "get",
     });
 };
+
+export const getGallery = async () => {
+    return await HttpClient({
+        url: "gallery.json",
+        method: "get",
+    });
+};

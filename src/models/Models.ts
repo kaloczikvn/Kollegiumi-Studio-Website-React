@@ -10,3 +10,7 @@ export interface ModelTeam {
     role?: string;
     image?: string;
 }
+
+export interface ModelImage {
+    image?: string;
+}
