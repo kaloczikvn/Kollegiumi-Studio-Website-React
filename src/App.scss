@@ -81,7 +81,7 @@ body {
 	margin: 0 0 40px;
 	z-index: 2;
 	text-shadow: 0 0 24px rgba(4,236,166,0.25);
-	line-height: 1;
+	line-height: 1.45;
 	color: #07b36f;
 }
 
@@ -281,7 +281,7 @@ footer {
 
 .alert {
 	padding: 25px;
-	text-align: center;
+	text-align: left;
 	background: rgba(211, 236, 4, .125);
 	border: 3px solid rgb(233, 197, 37);
 	box-shadow: 0 0 16px rgba(223, 246, 89, 0.15);

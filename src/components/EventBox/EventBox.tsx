@@ -25,6 +25,7 @@ const EventBox: React.FC<Props> = ({ event }) => (
             rotateXInvert={true}
             rotateYInvert={true}
             shadow={false}
+            rotateTouch={false}
         >
             <img src={GetImageUrl(event)} alt="" data-atropos-offset="0" />
             <div className="overlay" data-atropos-offset="0" />

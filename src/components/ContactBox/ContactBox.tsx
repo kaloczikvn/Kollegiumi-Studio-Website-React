@@ -26,6 +26,7 @@ const ContactBox: React.FC<Props> = ({
             rotateXInvert={true}
             rotateYInvert={true}
             shadow={false}
+            rotateTouch={false}
         >
             <div data-atropos-offset="2">
                 {children??""}

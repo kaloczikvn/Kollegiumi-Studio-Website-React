@@ -27,6 +27,7 @@ import since from "./assets/img/since.png";
 
 import "swiper/css";
 import "./App.scss";
+import "./Responsive.scss";
 
 const App: React.FC = () => {
 	const [events, setEvents] = useState<{
@@ -196,9 +197,19 @@ const App: React.FC = () => {
 								Autoplay
 							]}
 							spaceBetween={0}
-							slidesPerView={3}
 							autoplay={{ delay: 3000 }}
 							loop={true}
+							breakpoints={{
+								640: {
+									slidesPerView: 1,
+								},
+								768: {
+									slidesPerView: 2,
+								},
+								1920: {
+									slidesPerView: 3,
+								},
+							}}
 						>
 							{gallery.gallery.map((image: ModelImage, index: number) => (
 								<SwiperSlide key={index} onClick={() => openLightboxOnSlide(index + 1)}>
