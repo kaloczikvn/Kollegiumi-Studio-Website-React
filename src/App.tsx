@@ -186,7 +186,7 @@ const App: React.FC = () => {
 							<br/>
 							<AngleRightIcon />
 							{" "}
-							<a href="mailto:szestuvez@gmail.com" target="_blank">Jelentkezem</a>
+							<a href="mailto:szestuvez@gmail.com" target="_blank" rel="noreferrer">Jelentkezem</a>
 						</div>
 					</div>
 				</div>
