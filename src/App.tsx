@@ -157,11 +157,11 @@ const App: React.FC = () => {
 			</section>
 			<section id="sponsors">
 				<div className="container">
-					<img src={logo_rgbvisual} alt="" />
-					<img src={logo_scs} alt="" />
-					<img src={logo_rockgolyo} alt="" />
 					<img src={logo_ehok} alt="" />
 					<img src={logo_helix} alt="" />
+					<img src={logo_rgbvisual} alt="" />
+					<img src={logo_rockgolyo} alt="" />
+					<img src={logo_scs} alt="" />
 				</div>
 			</section>
 			<section id="team">
