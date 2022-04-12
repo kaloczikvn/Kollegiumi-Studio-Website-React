@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import {
     VolumeUpIcon,
@@ -15,8 +15,6 @@ import stylus from "../../assets/img/stylus.png";
 import "./Nav.scss";
 
 const Nav: React.FC = () => {
-    const [vinylShow, setVinylShow] = useState(false);
-
     return (
         <>
             <div className="nav">

@@ -4,6 +4,8 @@ import Atropos from "atropos/react";
 import { GetImageUrl } from "../../helpers/ImageHelper";
 import { ModelTeam } from "../../models/Models";
 
+import user from "../../assets/img/user.jpg";
+
 import "./TeamBox.scss";
 
 interface Props {
@@ -23,7 +25,11 @@ const TeamBox: React.FC<Props> = ({ team }) => (
             shadow={false}
             rotateTouch={false}
         >
-            <img src={GetImageUrl(team)} alt="" data-atropos-offset="0" />
+            {team.image ?
+                <img src={GetImageUrl(team)} alt="" data-atropos-offset="0" />
+            :
+                <img src={user} alt="" data-atropos-offset="0" />
+            }
             <div className="overlay" data-atropos-offset="0" />
             <div className="information" data-atropos-offset="5">
                 <span className="title">

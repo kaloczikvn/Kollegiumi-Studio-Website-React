@@ -23,6 +23,7 @@ import logo_rgbvisual from "./assets/img/sponsors/rgbvisual_ts.png";
 import logo_scs from "./assets/img/sponsors/scs_tr.png";
 import logo_rockgolyo from "./assets/img/sponsors/rockgolyo_tr.png";
 import logo_ehok from "./assets/img/sponsors/ehok_tr.png";
+import logo_helix from "./assets/img/sponsors/helix_tr.png";
 import since from "./assets/img/since.png";
 
 import "swiper/css";
@@ -160,6 +161,7 @@ const App: React.FC = () => {
 					<img src={logo_scs} alt="" />
 					<img src={logo_rockgolyo} alt="" />
 					<img src={logo_ehok} alt="" />
+					<img src={logo_helix} alt="" />
 				</div>
 			</section>
 			<section id="team">
