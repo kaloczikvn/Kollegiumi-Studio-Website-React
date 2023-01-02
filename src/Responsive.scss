@@ -104,8 +104,24 @@
 		}
 	}
 
-	#sponsors .container img {
-		max-width: 75px;
+	#sponsors {
+		height: auto;
+		padding: 15px 0;
+
+		.container {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			grid-template-rows: 1fr;
+			grid-gap: 10px;
+			align-items: center;
+			justify-items: center;
+			
+			img {
+				max-width: 100px;
+				min-height: 75px;
+				object-fit: contain;
+			}
+		}
 	}
 
 	#team {

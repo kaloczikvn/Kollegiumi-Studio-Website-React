@@ -172,6 +172,16 @@ const App: React.FC = () => {
 					<h3 className="section-sub-title">
 						Jelenleg {team.team.length??" - "} taggal büszkélkedhetünk, azonban folyamatosan várjuk új tagok jelentkezését!
 					</h3>
+					<div className="alert alert-danger">
+						<div className="alert-body">
+							A Kollégiumi Stúdió pályázatot hirdet <b>Stúdióvezetői</b> posztra. Részletes leírás a pályázati felhívásban olvasható.
+							<br/>
+							<AngleRightIcon />
+							{" "}
+							<a href="/stuvezpalyazat2022.pdf" target="_blank" rel="noreferrer">Pályázati felhívás megtekintése</a>
+						</div>
+					</div>
+					<br />
 					{!team.loading && team.team.length > 0 &&
 						<div className="team-grid">
 							{team.team.map((team: ModelTeam, index: number) => (
